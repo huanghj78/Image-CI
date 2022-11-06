@@ -28,8 +28,18 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a multi-line script
         run: |
-          docker pull k8s.gcr.io/build-image/kube-cross:v1.25.0-go1.19.3-bullseye.0
-          docker tag k8s.gcr.io/build-image/kube-cross:v1.25.0-go1.19.3-bullseye.0 13822030416/k8s.gcr.io:kube-cross-v1.25.0-go1.19.3-bullseye.0
+          docker pull registry.k8s.io/build-image/go-runner:v2.3.1-go1.19.3-bullseye.0
+          docker tag registry.k8s.io/build-image/go-runner:v2.3.1-go1.19.3-bullseye.0 13822030416/build-image/go-runner:v2.3.1-go1.19.3-bullseye.0
+          docker pull registry.k8s.io/build-image/setcap:bullseye-v1.3.0
+          docker tag registry.k8s.io/build-image/setcap:bullseye-v1.3.0 13822030416/build-image/setcap:bullseye-v1.3.0
+          docker pull registry.k8s.io/debian-base:bullseye-v1.3.0
+          docker tag registry.k8s.io/debian-base:bullseye-v1.3.0 13822030416/build-image/debian-base:bullseye-v1.3.0
+          docker pull registry.k8s.io/distroless-iptables:v0.1.1
+          docker tag registry.k8s.io/distroless-iptables:v0.1.1 13822030416/build-image/distroless-iptables:v0.1.1
+          docker pull registry.k8s.io/pause:3.8
+          docker tag registry.k8s.io/pause:3.8 13822030416/build-image/pause:3.8
+          docker pull registry.k8s.io/setcap:bullseye-v1.3.0
+          docker tag registry.k8s.io/setcap:bullseye-v1.3.0 13822030416/build-image/setcap:bullseye-v1.3.0
 
       # Runs a set of commands using the runners shell
       - name: Log in to Docker Hub
@@ -40,4 +50,9 @@ jobs:
           
       - name: Push to DockerHub
         run: |
-          docker push 13822030416/k8s.gcr.io:kube-cross-v1.25.0-go1.19.3-bullseye.0
+          docker push 13822030416/build-image/go-runner:v2.3.1-go1.19.3-bullseye.0
+          docker push 13822030416/build-image/setcap:bullseye-v1.3.0
+          docker push 13822030416/build-image/debian-base:bullseye-v1.3.0
+          docker push 13822030416/build-image/distroless-iptables:v0.1.1
+          docker push 13822030416/build-image/pause:3.8
+          docker push 13822030416/build-image/setcap:bullseye-v1.3.0
