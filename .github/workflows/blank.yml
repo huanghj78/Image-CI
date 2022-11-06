@@ -40,5 +40,5 @@ jobs:
           
       - name: Push to DockerHub
         run: |
-          docker login -u "${{secrets.DOCKER_USERNAME}}" -p ${{secrets.DOCKER_PASSWORD}}" docker.io
+          docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}} docker.io
           docker push 13822030416/k8s.gcr.io/go-runner-v2.3.1-go1.19.3-bullseye.0
