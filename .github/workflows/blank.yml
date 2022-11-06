@@ -28,8 +28,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a multi-line script
         run: |
-          docker pull registry.k8s.io/build-image/pause:3.8
-          docker tag registry.k8s.io/build-image/pause:3.8 13822030416/registry.k8s.io:pause-3.8
+          docker pull registry.k8s.io/pause:3.8
+          docker tag registry.k8s.io/pause:3.8 13822030416/registry.k8s.io:pause-3.8
 
       # Runs a set of commands using the runners shell
       - name: Log in to Docker Hub
